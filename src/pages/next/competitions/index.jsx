@@ -32,14 +32,13 @@ export default function Next() {
     <div className='w-full' >
       <div>
         <div className='flex justify-center flex-col items-star' >
-        <h1 className='text-center inline text-gray-100 rounded-md text-lg p-3 font-bold uppercase'>Welcome back, @user2023</h1>
-          <h2 className=" text-gray-100 rounded-md text-2xl text-center p-3 font-bold uppercase">Choose your favorite championship to start!</h2>      
+        {/* <h1 className='text-center inline text-gray-100 rounded-md text-lg p-3 font-bold uppercase'>Welcome back, @user2023</h1> */}
+          <h2 className=" text-green-300 rounded-md text-2xl text-center p-3 font-bold uppercase">Choose your favorite championship and explore!</h2>      
           
           {/* <div className='flex justify-center' >
             <input type="text" name="" id="" placeholder='Search...' className='p-1 w-4/12 text-yellow-400 bg-gray-800 ring-1 ring-yellow-400' />
           </div> */}
         </div>
-
       </div>
 
       <div class="flex flex-col w-4/5 " style={{marginInline: 'auto'}} >
@@ -63,7 +62,7 @@ export default function Next() {
                       item => (
                         <tr onClick={()=>handleRowClick()} className="cursor-pointer border-b transition duration-300 ease-in-out bg-white text-gray-800 hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-yellow-500">
                           
-                          <td className="whitespace-nowrap px-6 py-4 font-medium">
+                          <td className="whitespace-nowrap px-6 py-4 font-medium ">
                             <Image alt={item.name} src={item.emblem} width={25} height={25} />
                           </td>
                           <td className="whitespace-nowrap px-6 py-4">{item.id}</td>
