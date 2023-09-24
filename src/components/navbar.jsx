@@ -7,7 +7,8 @@ import { Bars3Icon, BellIcon, XMarkIcon, UserIcon } from '@heroicons/react/24/ou
 
 const navigation = [
   { name: 'Home', href: '/next', current: true },
-  { name: 'Campetitions', href: '/next/competitions', current: false },
+  // { name: 'Campetitions', href: '/next/competitions', current: false },
+  { name: 'Bets', href: '/next/bets', current: false },
   { name: 'Calendario', href: '#', current: false },
 ]
 
@@ -17,7 +18,7 @@ function classNames(...classes) {
 
 export default function Navbar(){
     return (
-        <Disclosure as="nav" className="bg-yellow-500">
+        <Disclosure as="nav" className="bg-indigo-500">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

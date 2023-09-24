@@ -10,11 +10,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
-
-  
   return(
     <main>
-      {/* <Navbar/> */}
       <section className='relative bg-gray-900 h-screen flex justify-center items-start'  >
           <Image className='absolute top-0 left-0  md:shrink-0' src={image1} alt='Decoration image' />
         

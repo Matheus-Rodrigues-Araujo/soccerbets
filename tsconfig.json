@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/navbar.jsx", "src/components/nextLayout.jsx", "src/pages/api/competitions.js", "src/pages/next/index.jsx", "src/components/table.jsx", "src/pages/next/competitions/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/navbar.jsx", "src/components/nextLayout.jsx", "src/pages/api/competitions.js", "src/pages/next/index.jsx", "src/components/table.jsx", "src/pages/next/competitions/[id].jsx", "src/pages/next/bets/index.jsx"],
   "exclude": ["node_modules"]
 }
