@@ -1,66 +1,158 @@
-"use client"
+// "use client"
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import Image from 'next/image'
+// import { useState, useEffect } from 'react'
 import Layout from '@/components/nextLayout'
 
-export default function Next() {
+export default function Next({teamsData, competitionData}) {
   const router = useRouter()
-  const [competitionsData, setCompetitionsData] = useState([])
-  const [isLoading, setLoading] = useState(true)
-
-  const handleRowClick = () => {
-    router.push('#')
-  }
-
-  const getCompetitions = async () =>{
-    const response = await fetch('../api/competitions')
-    const data = await response.json()
-    const {competitions} = data
-    setCompetitionsData(competitions)
-    setLoading(false)
-  }
-
-  useEffect(()=>{
-    getCompetitions()
-  }, [])
-
+  const { id } = router.query
   return(
-   <Layout children={
-    <div className='w-full h-scren' >
-      <div>
-        <div className='flex justify-center flex-col items-star w-6/12 mx-auto' >
-          <h2 className=" text-green-300 rounded-md text-2xl text-center p-3 font-bold uppercase">Choose your favorite championship and explore!  <span className='text-yellow-500' >ID= {router.query.id}</span></h2>      
-          
-        </div>
-      </div>
-      <div className='flex justify-center items-center bg-white w-6/12 mx-auto rounded-md' >
-    
-        <div className='grid grid-cols-2  items-start justify-items-center p-4 gap-5' >
-          
-          <img alt="Barcelona" src={"https://4.bp.blogspot.com/-fGaXTFJ5irY/W60yuIRN7EI/AAAAAAAAA68/HGWzU8pZSOA-e3iD3rSAdPQTP9nnUdnrQCLcBGAs/s1600/Nuevo%2Bescudo%2Bdel%2BBar%25C3%25A7a.png"} className='h-28 object-contain  mx-auto' />
-          <div>
-            <div className='grid grid-cols-2 items-center justify-items-center' >
-              <img alt="Barcelona" src={"https://th.bing.com/th/id/R.9d7997e4e13b1c737217f8d1a3f1c6f5?rik=2tCsgtAE5w6xoA&riu=http%3a%2f%2fechesters.co.uk%2fimages%2fposts%2fflag-of-spain.png&ehk=t0cUSAxXePoXOokg%2bPWqCFoxqJQ%2bXhrIA3V%2b9QQEeoM%3d&risl=&pid=ImgRaw&r=0"} className='h-12 w-12 object-contain  mx-auto' />
-              <div className='grid items-center justify-items-center' >
-                <p className='text-black font-bold' >Brazil</p>
-                <p className='text-gray-900 font-bold' >BRL</p>
+     <Layout children={
+      <div className='w-full min-h-screen bg-white' >
+        <div className='flex justify-evenly items-center gap-0' >
+          <div className='w-4/12' >
+            <img alt={competitionData.name} src={competitionData.emblem} className='h-30 object-contain  mx-auto md:h-80 ' />
+          </div>
+  
+          <div className='w-4/12' >
+            <div className='grid justify-items-center'>
+              <img alt="Barcelona" src={"https://th.bing.com/th/id/R.9d7997e4e13b1c737217f8d1a3f1c6f5?rik=2tCsgtAE5w6xoA&riu=http%3a%2f%2fechesters.co.uk%2fimages%2fposts%2fflag-of-spain.png&ehk=t0cUSAxXePoXOokg%2bPWqCFoxqJQ%2bXhrIA3V%2b9QQEeoM%3d&risl=&pid=ImgRaw&r=0"} 
+                    className='object-contain  mx-auto h-20 w-20 md:h-20' />
+                    <p className='text-black' >{teamsData[0].area.name} - {teamsData[0].area.code}</p>
               </div>
             </div>
+        </div>
+  
+        <div className='text-black' >
+          <h2 className='rounded-md text-2xl text-center p-3 font-bold uppercase' >Teams</h2>
+        <div class="flex flex-col w-4/5 " style={{marginInline: 'auto'}} >
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div class="overflow-hidden p-3 ">
+              <table class="min-w-full text-left text-sm font-light">
+                <thead class="bg-indigo-500 uppercase  text-white border-b font-medium dark:border-neutral-500">
+                  <tr>
+                    <th scope="col" class="px-6 py-4">Id</th>
+                    <th scope="col" class="px-6 py-4">Name</th>
+                    <th scope="col" class="px-6 py-4">TLA</th>
+                    <th scope="col" class="px-6 py-4">Founded</th>
+                  </tr>
+                </thead>
+                <tbody className='bg-black' >
+                  {
+                    teamsData && 
+                    teamsData
+                    .map(
+                      item => (
+                        <tr 
+                         className=" border-b transition duration-300 ease-in-out bg-white text-gray-800 hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-gray-800 hover:text-white">
+                          
+                          <td className="whitespace-nowrap px-6 py-4 font-medium">{item.id}</td>
+                          <td className="whitespace-nowrap px-6 py-4">
+                            <div className=' flex flex-cols items-center gap-1 ' >
+                              <Image src={item.crest} alt={item.name} width={25} height={25} />
+                              {item.name}
+                            </div>
+                          </td>
+                          <td className="whitespace-nowrap px-6 py-4">
+                            <div className=' flex flex-cols items-center gap-1 ' >
+                              {item.tla}
+                            </div>
+                          </td>
+                          <td className="whitespace-nowrap px-6 py-4">
+                            {item.founded}
+                          </td>
+                        </tr>
+                      )
+                    )
+                  }
+                </tbody>
+              </table>
 
-            <p className='text-black' >Name: Campeonato Brasileiro Série A</p>
-            <p className='text-black' >Code: BSA</p>
-
+            </div>
           </div>
-            
-          
         </div>
       </div>
-  </div>
+        </div>
+      // </div>
 
-  } />
-  )
+    } />
+    )
+    
+};
+
+ 
+
+export const getServerSideProps = async({params}) =>{
+  const { id } = params
+  const token = process.env.API_TOKEN
+
+  try {
+    const response = await fetch(
+      `http://api.football-data.org/v4/competitions/${id}/teams`, 
+      {
+          headers: {
+          'X-Auth-Token': token
+      }
+  })
+  
+  if(!response.ok) throw new Error('Error to fetch teams data')
+
+  const data = await response.json()
+  const {teams, season, competition } = data
+  return {
+    props: {
+      teamsData: teams,
+      seasonData: season,
+      competitionData: competition
+      
+    }
+  }
+
+  } catch (error) {
+    console.error('Error to fetch teams data', error)
+
+    return {
+      props: {
+        teamsData: []
+      }
+    }
+  }
+
 
 }
 
 
+  // const getTeamsCompetition = async () =>{
+  //   const response = await fetch(`../api/teams/${id}`)
+  //   const data = await response.json()
+  //   const {teams} = data
+  //   setCompetitionsData(teams)
+  //   console.log(te)
+  //   setLoading(false)
+  // }
+
+  // useEffect(()=>{
+  //   getTeamsCompetition()
+  // }, [])
+
+
+
+
+
+{/* <div>
+              <img alt="Barcelona" src={"https://th.bing.com/th/id/R.9d7997e4e13b1c737217f8d1a3f1c6f5?rik=2tCsgtAE5w6xoA&riu=http%3a%2f%2fechesters.co.uk%2fimages%2fposts%2fflag-of-spain.png&ehk=t0cUSAxXePoXOokg%2bPWqCFoxqJQ%2bXhrIA3V%2b9QQEeoM%3d&risl=&pid=ImgRaw&r=0"} 
+              className='h-12 w-12 object-contain  mx-auto' />
+              <div className='grid items-center justify-items-center' >
+                <p className='text-black font-bold' >Brazil</p>
+                <p className='text-gray-900 font-bold' >BRL</p>
+              </div>
+
+            </div>
+
+            <p className='text-black' >Name: Campeonato Brasileiro Série A</p>
+            <p className='text-black' >Code: BSA</p> */}
+
+            

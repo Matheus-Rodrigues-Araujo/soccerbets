@@ -13,16 +13,16 @@ export default function Home() {
   return(
     <main>
       <section className='relative bg-gray-900 h-screen flex justify-center items-start'  >
-          <Image className='absolute top-0 left-0  md:shrink-0' src={image1} alt='Decoration image' />
+          {/* <Image className='absolute top-0 left-0  md:shrink-0' src={image1} alt='Decoration image' /> */}
         
         <div className='absolute z-10 bg-yellow-500  flex flex-col justify-items items-center gap-4 rounded-md p-12'>
           <h1 className='text-center inline text-gray-100 rounded-md text-5xl bg-gray-800 p-3 font-bold uppercase'>
             SoccerBets
           </h1>
-          <h2 className="font-bold text-md text-2xl text-gray-800 p-3" >Play with your friends and family</h2>
+          <h2 className="font-bold text-md text-white underline p-3 lg:text-2xl " >Play with your friends and family</h2>
           
-          <div className='w-1/2' >
-            <p className="font-bold text-md text-2xl text-gray-800 w text-justify"  >
+          <div className='md:w-1/2' >
+            <p className="font-bold text-md  text-gray-800 text-justify lg:text-2xl "  >
             Are you a die-hard football enthusiast seeking an all-in-one platform for the latest updates, insightful analysis, and interactive gaming experiences? Look no further than SoccerBets – your go-to app for all things football!
             </p>
           </div>
@@ -39,7 +39,7 @@ export default function Home() {
     
       </section>
 
-      <section className="relative information bg-yellow-500 flex justify-center items-start h-[50vh]" style={{backgroundColor: 'rgb(17 23 36)'}} >
+      {/* <section className="relative information bg-yellow-500 flex justify-center items-start h-[50vh]" style={{backgroundColor: 'rgb(17 23 36)'}} >
             <div className='flex flex-col gap-5' >
               <h3 className="text-yellow-400 text-5xl font-bold text-center" >Explore our content</h3>
               <p className="text-yellow-400 text-2xl text-center mb-8" >Click and know about our services</p>
@@ -64,67 +64,67 @@ export default function Home() {
                 </a>
               </div>
             </div>
-      </section>
+      </section> */}
 
       {/* Seção 1: Stay Ahead with Live Updates */}
-      <section id="updates" className=" bg-yellow-400 p-8">
+      {/* <section id="updates" className=" bg-yellow-400 p-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Stay Ahead with Live Updates</h2>
           <p className="text-gray-700 text-lg mb-8">
             SoccerBets keeps you in the loop with real-time updates on matches, scores, player statistics, and more. Whether it's the nail-biting moments of a league showdown or the global stage of international competitions, you'll have the information at your fingertips.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Seção 2: In-Depth Analysis and Commentary */}
-      <section id='analysis' className="p-8" style={{backgroundColor: 'rgb(17 23 36)'}} >
+      {/* <section id='analysis' className="p-8" style={{backgroundColor: 'rgb(17 23 36)'}} >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">In-Depth Analysis and Commentary</h2>
           <p className="text-gray-100 text-lg mb-8">
             Get ready to dive deep into the world of football with our expert analysis and commentary. Our team of seasoned pundits provides you with thought-provoking insights, tactical breakdowns, and player performance assessments, ensuring you're always in the know about the beautiful game.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Seção 3: Predict, Play, Win */}
-      <section id='games' className="bg-yellow-400 p-8">
+      {/* <section id='games' className="bg-yellow-400 p-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Predict, Play, Win</h2>
           <p className="text-gray-700 text-lg mb-8">
             But that's not all – SoccerBets also brings the thrill of betting and gaming right to your device. Engage in a variety of football-related games where you can make predictions, set up fantasy teams, and compete with fellow enthusiasts. Test your football knowledge and strategy against a global community for a chance to win exciting prizes.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Seção 4: Connect with Fellow Fans */}
-      <section id="community"  className="p-8" style={{backgroundColor: 'rgb(17 23 36)'}}>
+      {/* <section id="community"  className="p-8" style={{backgroundColor: 'rgb(17 23 36)'}}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Connect with Fellow Fans</h2>
           <p className="text-gray-100 text-lg mb-8">
             Join the vibrant community of football fans on SoccerBets. Discuss matches, share opinions, and engage in lively debates with fans from around the world. From transfer rumors to unforgettable goals, there's always something to talk about.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Seção 5: Customized Experience */}
-      <section id="experience" className="bg-yellow-400 p-8" >
+      {/* <section id="experience" className="bg-yellow-400 p-8" >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Customized Experience</h2>
           <p className="text-gray-700 text-lg mb-8">
             Tailor your SoccerBets experience to your preferences. Follow your favorite teams and players to receive personalized updates and recommendations. Whether you're a fan of the Premier League, La Liga, Serie A, or any other league, we've got you covered.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Seção 6: Never Miss a Moment */}
-      <section id='information' className="bg-white p-8" style={{backgroundColor: 'rgb(17 23 36)'}}>
+      {/* <section id='information' className="bg-white p-8" style={{backgroundColor: 'rgb(17 23 36)'}}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Never Miss a Moment</h2>
           <p className="text-gray-100 text-lg mb-8">
             With push notifications and personalized alerts, you'll never miss a crucial moment again. Whether it's a last-minute goal, a game-changing substitution, or breaking news from the world of football, SoccerBets ensures you're always in the loop.
           </p>
         </div>
-      </section>
+      </section> */}
 
 
     </main>

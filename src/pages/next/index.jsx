@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import Layout from '@/components/nextLayout'
+import { AlertCustomAnimation } from '@/components/alertNotification'
 
 export default function Next() {
   const router = useRouter()
@@ -41,9 +42,8 @@ export default function Next() {
           <div className='grid grid-cols-2 md:grid-cols-4 items-center justify-items-center p-4 gap-5' >
             {
               competitionsData && competitionsData.length > 1 && competitionsData.map(item => (
-                <Link href="#" className='w-full p-2 h-32 ring-1 rounded-md ring-gray-200 cursor-pointer grid justify-item-center items-center hover:bg-yellow-500'>
+                <Link key={item.id} href={`/next/competitions/${encodeURIComponent(item.id)}`} className='w-full p-2 h-32 ring-1 rounded-md ring-gray-200 cursor-pointer grid justify-item-center items-center hover:bg-indigo-400'>
                   <img alt={item.name} src={item.emblem} className='h-28 object-contain  mx-auto' />
-
                 </Link>
               ))
             }

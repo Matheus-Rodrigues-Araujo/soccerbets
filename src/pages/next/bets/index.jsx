@@ -3,8 +3,10 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import Layout from '@/components/nextLayout'
+import {AlertCustomAnimation} from '@/components/alertNotification'
 import Link from 'next/link'
 import imagem3 from '@/assets/img_teste.jpg'
+import AccordionFlush from '@/components/gameItem'
 // import axios from 'axios'
 
 export default function Next() {
@@ -99,11 +101,11 @@ export default function Next() {
                   }
                 </tbody>
               </table>
+
             </div>
           </div>
         </div>
       </div>
-
   </div>
 
   } />
