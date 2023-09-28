@@ -5,7 +5,7 @@ import Image from 'next/image'
 // import { useState, useEffect } from 'react'
 import Layout from '@/components/nextLayout'
 
-export default function Next({teamsData, competitionData}) {
+export default function Next({teamData}) {
   const router = useRouter()
   const { id } = router.query
 
@@ -16,16 +16,17 @@ export default function Next({teamsData, competitionData}) {
   return(
      <Layout children={
       <div className='w-full min-h-screen bg-white' >
+      
         <div className='flex justify-evenly items-center gap-0' >
           <div className='w-4/12 mt-5' >
-            <img alt={competitionData.name} src={competitionData.emblem} className='h-30 object-contain  mx-auto md:h-80 ' />
+            <img alt={teamData.name} src={teamData.crest} className='h-30 object-contain  mx-auto md:h-80 ' />
           </div>
   
           <div className='w-4/12' >
             <div className='grid justify-items-center'>
               <img alt="Barcelona" src={"https://th.bing.com/th/id/R.9d7997e4e13b1c737217f8d1a3f1c6f5?rik=2tCsgtAE5w6xoA&riu=http%3a%2f%2fechesters.co.uk%2fimages%2fposts%2fflag-of-spain.png&ehk=t0cUSAxXePoXOokg%2bPWqCFoxqJQ%2bXhrIA3V%2b9QQEeoM%3d&risl=&pid=ImgRaw&r=0"} 
                     className='object-contain  mx-auto h-20 w-20 md:h-20' />
-                    <p className='text-black' >{teamsData[0].area.name} - {teamsData[0].area.code}</p>
+                    <p className='text-black' >{teamData.area.name} - {teamData.area.code}</p>
               </div>
             </div>
         </div>
@@ -45,14 +46,14 @@ export default function Next({teamsData, competitionData}) {
                     <th scope="col" class="px-6 py-4">Founded</th>
                   </tr>
                 </thead>
-                <tbody className='bg-black' >
+                {/* <tbody className='bg-black' >
                   {
                     teamsData && 
                     teamsData
                     .map(
                       item => (
                         <tr 
-                        onClick={()=> handleRowClick(item.id)}
+                        
                          className=" border-b transition duration-300 ease-in-out bg-white text-gray-800 hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-gray-800 hover:text-white">
                           
                           <td className="whitespace-nowrap px-6 py-4 font-medium">{item.id}</td>
@@ -74,7 +75,7 @@ export default function Next({teamsData, competitionData}) {
                       )
                     )
                   }
-                </tbody>
+                </tbody> */}
               </table>
 
             </div>
@@ -97,7 +98,7 @@ export const getServerSideProps = async({params}) =>{
 
   try {
     const response = await fetch(
-      `http://api.football-data.org/v4/competitions/${id}/teams`, 
+      `http://api.football-data.org/v4/teams/${id}`, 
       {
           headers: {
           'X-Auth-Token': token
@@ -107,12 +108,13 @@ export const getServerSideProps = async({params}) =>{
   if(!response.ok) throw new Error('Error to fetch teams data')
 
   const data = await response.json()
-  const {teams, season, competition } = data
+//   const {teams, season, competition } = data
+    console.log(data)
   return {
     props: {
-      teamsData: teams,
-      seasonData: season,
-      competitionData: competition
+      teamData: data,
+    //   seasonData: season,
+    //   competitionData: competition
       
     }
   }
@@ -122,43 +124,12 @@ export const getServerSideProps = async({params}) =>{
 
     return {
       props: {
-        teamsData: []
+        teamData: []
       }
     }
   }
 
 
 }
-
-
-  // const getTeamsCompetition = async () =>{
-  //   const response = await fetch(`../api/teams/${id}`)
-  //   const data = await response.json()
-  //   const {teams} = data
-  //   setCompetitionsData(teams)
-  //   console.log(te)
-  //   setLoading(false)
-  // }
-
-  // useEffect(()=>{
-  //   getTeamsCompetition()
-  // }, [])
-
-
-
-
-
-{/* <div>
-              <img alt="Barcelona" src={"https://th.bing.com/th/id/R.9d7997e4e13b1c737217f8d1a3f1c6f5?rik=2tCsgtAE5w6xoA&riu=http%3a%2f%2fechesters.co.uk%2fimages%2fposts%2fflag-of-spain.png&ehk=t0cUSAxXePoXOokg%2bPWqCFoxqJQ%2bXhrIA3V%2b9QQEeoM%3d&risl=&pid=ImgRaw&r=0"} 
-              className='h-12 w-12 object-contain  mx-auto' />
-              <div className='grid items-center justify-items-center' >
-                <p className='text-black font-bold' >Brazil</p>
-                <p className='text-gray-900 font-bold' >BRL</p>
-              </div>
-
-            </div>
-
-            <p className='text-black' >Name: Campeonato Brasileiro Série A</p>
-            <p className='text-black' >Code: BSA</p> */}
 
             
